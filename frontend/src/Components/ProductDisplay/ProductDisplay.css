@@ -6,6 +6,7 @@
 .product-display-left{
     display: flex;
     gap: 17px;
+    margin-right: 40px;
 
 }
 .product-display-img-list{
