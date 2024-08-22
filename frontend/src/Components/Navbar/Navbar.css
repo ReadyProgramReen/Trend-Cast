@@ -90,6 +90,8 @@
 .nav-dropdown{
     display: none;
 }
+
+
 /* Media query */
 
 @media(max-width:1280px){
