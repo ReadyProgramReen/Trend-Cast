@@ -9,7 +9,8 @@ dist-ssr
 *.local
 
 Frontend_Assets
-Assets
+assets
+upload
 
 # testing
 /coverage

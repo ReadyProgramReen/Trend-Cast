@@ -51,7 +51,7 @@ app.use('/images',express.static('upload/images'))
 
 app.post('/upload', upload.single('product'), (req,res)=>{
     res.json({
-        succedd: 1,
+        success: 1,
         image_url:`http://localhost:${4000}/images/${req.file.filename}`
     })
 }) 
