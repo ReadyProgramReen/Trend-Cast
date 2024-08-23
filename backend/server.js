@@ -101,6 +101,12 @@ app.post('/removeproduct', async(req,res)=>{
 
 })
 
+// get all products to display in frontend 
+app.get('/allproducts',async(req,res)=>{
+    let products = await Product.find({});
+    console.log('All products fetched ')
+    res.send(products)
+})
 
 app.listen(port,()=>{
     console.log(`Server running on Port ${port}`)
