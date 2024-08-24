@@ -180,6 +180,13 @@ app.get('/popular',async (req,res)=>{
     res.send(popular);
 })
 
+// creating endpoint for adding products in cart data
+
+app.post('/addtocart', async(req,res)=>{
+    console.log(req.body);
+
+})
+
 
 
 app.listen(port,()=>{
