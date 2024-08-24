@@ -42,9 +42,12 @@ const Navbar = () => {
 
     </ul> 
 
-
     <div className="nav-login-cart">
-        <Link className="no-underline" to={'/login'}><button>Login</button></Link>
+      {localStorage.getItem('auth-token') ?
+
+      <button onClick={()=>{localStorage.removeItem('auth-token'); window.location.replace('/')}}>Logout</button>
+       :
+        <Link className="no-underline" to={'/login'}><button>Login</button></Link> }
         <Link className="no-underline" to={'/cart'}><img src={cart_icon} alt="" /></Link>
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
