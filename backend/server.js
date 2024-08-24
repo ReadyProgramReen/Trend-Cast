@@ -60,36 +60,31 @@ app.post('/upload', upload.single('product'), (req,res)=>{
 
 // 
 
-app.post('/addproduct', async(req,res)=>{
-    const products = await Product.find({});
-    let id;
-    if(products.length>0)
-    {
-        let last_product_array = products.slice(-1);
-        let last_product = last_product_array[0];
-        id = last_product.id+1
-        
-    }
-    else{
-        i = 1;
-    }
-    const product = await Product.create({
-        id:id,
-        name:req.body.name,
-        image:req.body.image,
-        category:req.body.category,
-        new_price:req.body.new_price,
-        old_price:req.body.old_price,
+app.post('/addproduct', async (req, res) => {
+    try {
+        const product = new Product({
+            name: req.body.name,
+            image: req.body.image,
+            category: req.body.category,
+            new_price: req.body.new_price,
+            old_price: req.body.old_price
+        });
 
-    })
-    console.log(' New Product saved')
-    res.json({
-        success: true,
-        name:req.body.name
-        
-    })
-    
-})
+        await product.save();
+
+        console.log('New Product saved');
+        res.json({
+            success: true,
+            name: req.body.name
+        });
+    } catch (error) {
+        console.error('Error saving product:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
 
 //  Deleting Product 
 
