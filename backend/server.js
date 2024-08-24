@@ -171,6 +171,15 @@ app.get('/newcollection', async (req,res)=>{
     res.send(newCollection)
 })
 
+// Creating endpoint popular in women 
+
+app.get('/popular',async (req,res)=>{
+    let products = await Product.find({category:"women"});
+    let popular = products.slice(0,4);
+    console.log('Popular products fecthed ')
+    res.send(popular);
+})
+
 
 
 app.listen(port,()=>{
